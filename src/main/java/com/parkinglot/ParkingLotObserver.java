@@ -1,5 +1,5 @@
 package com.parkinglot;
 
-public interface Observer {
+public interface ParkingLotObserver {
     void update(String message);
 }

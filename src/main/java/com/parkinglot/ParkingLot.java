@@ -9,21 +9,22 @@ import java.util.List;
 
 public class ParkingLot {
     int capacity;
-
+   // public Attendant attendant;
 
 
     public ParkingLot(int capacity) {
+
         this.capacity=capacity;
     }
 
     List<Car> parkingLot = new ArrayList<>(capacity);
 
-    List<Observer> observerList= new ArrayList<>();
+    List<ParkingLotObserver> observerList= new ArrayList<>();
 
     public void parkCar(Car car) {
         if(isParkingFull()) {
             notifyObservers("Parking Lot Is Full");
-            throw new ParkingLotIsFullException("Parking Lot Is Full");
+            //throw new ParkingLotIsFullException("Parking Lot Is Full");
         }
         if(isTheCarInTheParkingLot(car))
             throw new CarIsAlreadyParkedException("Car is parked already");
@@ -37,6 +38,7 @@ public class ParkingLot {
     }
 
     public boolean isTheCarInTheParkingLot(Car car) {
+
         return parkingLot.contains(car);
     }
 
@@ -49,12 +51,17 @@ public class ParkingLot {
     }
 
     public void notifyObservers(String message){
-        for (Observer observers : observerList) {
+        for (ParkingLotObserver observers : observerList) {
             observers.update(message);
         }
     }
-    public void registerObserver(Observer observer) {
+    public void registerObserver(ParkingLotObserver observer) {
         observerList.add(observer);
+    }
+
+
+    int getAvailableSpace(){
+        return this.capacity - parkingLot.size();
     }
 
 }

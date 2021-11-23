@@ -82,8 +82,8 @@ public class ParkingLotTest {
         @Test
         void shouldNotifyObserversWhenParkingSpaceIsAvailable() {
             // Given
-            Observer parkingLotOwner = mock(ParkingLotOwner.class);
-            Observer trafficCop = mock(TrafficCop.class);
+            ParkingLotObserver parkingLotOwner = mock(ParkingLotOwner.class);
+            ParkingLotObserver trafficCop = mock(TrafficCop.class);
             ParkingLot parkingLot = new ParkingLot(1);
             parkingLot.registerObserver(parkingLotOwner);
             parkingLot.registerObserver(trafficCop);
@@ -99,8 +99,8 @@ public class ParkingLotTest {
 
         @Test
         void shouldNotifyObserversWhenParkingLotIsFull() {
-            Observer parkingLotOwner = mock(ParkingLotOwner.class);
-            Observer trafficCop = mock(TrafficCop.class);
+            ParkingLotObserver parkingLotOwner = mock(ParkingLotOwner.class);
+            ParkingLotObserver trafficCop = mock(TrafficCop.class);
             ParkingLot parkingLot = new ParkingLot(1);
             parkingLot.registerObserver(parkingLotOwner);
             parkingLot.registerObserver(trafficCop);
@@ -114,8 +114,6 @@ public class ParkingLotTest {
         }
 
     }
-
-
 
 
 }
